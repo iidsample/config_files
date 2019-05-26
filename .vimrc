@@ -1,6 +1,7 @@
 set nocompatible              " required
 filetype off                  " required
 set nu 
+set ic  "case insensitive search
 set hlsearch
 " set the runtime path to include Vundle and initialize
 set rtp+=~/.vim/bundle/Vundle.vim
@@ -11,12 +12,41 @@ autocmd CompleteDone * pclose
 au BufNewFile,BufRead *.py set tabstop=4
 au BufNewFile,BufRead *.py set softtabstop=4
 au BufNewFile,BufRead *.py set shiftwidth=4
+au BufNewFile,BufRead *.py  set fileformat=unix
 au BufNewFile,BufRead *.py set textwidth=79
 au BufNewFile,BufRead *.py  set expandtab
+
+au BufNewFile,BufRead *.R set tabstop=4
+au BufNewFile,BufRead *.R set softtabstop=4
+au BufNewFile,BufRead *.R set expandtab
+
+au BufNewFile,BufRead *.cpp set tabstop=4
+au BufNewFile,BufRead *.cpp set softtabstop=4
+au BufNewFile,BufRead *.cpp set expandtab
+
+au BufNewFile,BufRead *.md set tabstop=4
+au BufNewFile,BufRead *.md set softtabstop=4
+au BufNewFile,BufRead *.md set shiftwidth=4
+au BufRead,BufNewFile *.md setlocal textwidth=80
+au BufNewFile,BufRead *.md setlocal spell
 "au BufNewFile,BufRead *.py  set autoindent
-au BufNewFile,BufRead *.py  set fileformat=unix
-au BufNewFile,BufRead *.cpp set tabstop=2
-au BufNewFile,BufRead *.cpp set softtabstop=2
+
+
+au BufNewFile,BufRead *.c set expandtab
+au BufNewFile,BufRead *.c set softtabstop=4
+au BufNewFile,BufRead *c set shiftwidth=4
+au BufNewFile,BufRead *c set tabstop=4
+au BufNewFile,BufRead *.c set cindent
+
+au BufNewFile,BufRead *.cu set tabstop=4
+au BufNewFile,BufRead *.cu set shiftwidth=4
+au BufNewFile,BufRead *.cu set softtabstop=4
+au BufNewFile,BufRead *.cu set expandtab
+au BufNewFile,BufRead *.cu set cindent
+au BufNewFile,BufRead *.cu set ft=cuda
+
+au BufNewFile,BufRead *.tex setlocal spell
+
 
 
 " let Vundle manage Vundle, required
@@ -36,10 +66,13 @@ Plugin 'hynek/vim-python-pep8-indent'
 Plugin 'lisposter/vim-blackboard' 
 Plugin 'nhooyr/elysian.vim'
 Plugin 'notpratheek/Pychimp-vim'
+Plugin 'rust-lang/rust.vim'
+Plugin 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 "Plugin 'tmhedberg/SimpylFold'"
 " Add all your plugins here (note older versions of Vundle used Bundle instead of Plugin)
 "Plugin 'vim-scripts/indentpython.vim'"
 "Plugin 'Yggdroot/indentLine'" 
+Plugin 'elzr/vim-json'
 Bundle 'Valloric/YouCompleteMe'
 " All of your Plugins must be added before the following line
 set laststatus=2
@@ -53,9 +86,10 @@ nnoremap <C-L> <C-W><C-L>
 nnoremap <C-H> <C-W><C-H>
 nnoremap <CR> :noh<CR><CR>
 nnoremap <F2> :shell<CR><CR>
-nnoremap <C-R> :tabp<CR><CR>
+nnoremap <C-T> :tabp<CR><CR>
 nnoremap <C-F> :tabn<CR><CR>
 set t_Co=256
+set backspace=indent,eol,start
 let g:airline_powerline_fonts = 1
 filetype plugin indent on    " required
 syntax on
